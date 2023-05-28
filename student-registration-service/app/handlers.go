@@ -2,7 +2,7 @@ package app
 
 import (
 	"net/http"
-	"student-registration-service/student"
+	"student-registration-service/model"
 
 	"github.com/gin-gonic/gin"
 )
@@ -12,7 +12,7 @@ func (s *Server) health(c *gin.Context) {
 }
 
 func (s *Server) validateStudent(c *gin.Context) {
-	var student student.Model
+	var student model.Student
 	if err := c.ShouldBindJSON(&student); err != nil {
 		c.AbortWithError(http.StatusBadRequest, err)
 	}
@@ -21,7 +21,7 @@ func (s *Server) validateStudent(c *gin.Context) {
 }
 
 func (s *Server) saveStudent(c *gin.Context) {
-	student, _ := c.MustGet("student").(student.Model)
+	student, _ := c.MustGet("student").(model.Student)
 	if err := s.studentRepository.Save(&student); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": err,

@@ -2,13 +2,13 @@ package app
 
 import (
 	"student-registration-service/database/sql"
-	"student-registration-service/student"
+	"student-registration-service/model"
 
 	"github.com/gin-gonic/gin"
 )
 
 type StudentRepository interface {
-	Save(*student.Model) error
+	Save(*model.Student) error
 }
 
 type Server struct {
@@ -23,7 +23,7 @@ func NewServer() (*Server, error) {
 	}
 	return &Server{
 		studentRepository: rep,
-		router: gin.Default(),
+		router:            gin.Default(),
 	}, nil
 }
 

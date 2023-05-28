@@ -1,7 +1,7 @@
 package sql
 
 import (
-	"student-registration-service/student"
+	"student-registration-service/model"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -16,13 +16,13 @@ func NewStudentRepository() (*StudentRepository, error) {
 	if err != nil {
 		return nil, err
 	}
-	err = db.AutoMigrate(&student.Model{})
+	err = db.AutoMigrate(&model.Student{})
 	if err != nil {
 		return nil, err
 	}
 	return &StudentRepository{db}, nil
 }
 
-func (sr *StudentRepository) Save(student *student.Model) error {
+func (sr *StudentRepository) Save(student *model.Student) error {
 	return sr.db.Create(student).Error
 }
