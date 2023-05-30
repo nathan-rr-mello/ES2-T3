@@ -17,5 +17,4 @@ public class SubRegApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SubRegApplication.class, args);
 	}
-
 }
