@@ -4,6 +4,8 @@ import com.service.subreg.domain.model.Subject;
 import com.service.subreg.domain.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,5 +24,10 @@ public class SubjectController {
     @GetMapping
     public List<Subject> getAllSubjects() {
         return subjectService.findAll();
+    }
+
+    @PostMapping
+    public void save(@RequestBody Subject subject){
+        subjectService.save(subject);
     }
 }

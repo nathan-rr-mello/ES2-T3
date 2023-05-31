@@ -20,4 +20,8 @@ public class ClassroomService {
     public List<Classroom> findAll() {
         return classRepository.findAll();
     }
+
+    public void save(Classroom classroom){
+        classRepository.save(classroom);
+    }
 }

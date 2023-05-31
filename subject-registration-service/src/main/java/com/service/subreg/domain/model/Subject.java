@@ -7,8 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "SUBJECT")
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
