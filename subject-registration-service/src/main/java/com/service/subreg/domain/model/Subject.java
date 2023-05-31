@@ -2,19 +2,19 @@ package com.service.subreg.domain.model;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany(mappedBy = "disciplina")
-    private List<Class> turmas;
+    @OneToMany(mappedBy = "subject")
+    private List<Classroom> classes;
     private String cod;
     private String name;
     private String schedule;
@@ -60,12 +60,12 @@ public class Subject {
         this.schedule = schedule;
     }  
 
-    public List<Class> getTurmas() {
-        return this.turmas;
+    public List<Classroom> getClasses() {
+        return this.classes;
     }
 
-    public void setTurmas(List<Class> turmas) {
-        this.turmas = turmas;
+    public void setClasses(List<Classroom> classes) {
+        this.classes = classes;
     }
 
     public String toString() {

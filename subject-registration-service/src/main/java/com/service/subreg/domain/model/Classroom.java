@@ -1,13 +1,13 @@
 package com.service.subreg.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Class {
+public class Classroom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,11 +15,11 @@ public class Class {
     @ManyToOne
     private Subject subject;
 
-    public Class() {
+    public Classroom() {
     }
 
-    public Class(int class_number, Subject subject) {
-        this.number = class_number;
+    public Classroom(int number, Subject subject) {
+        this.number = number;
         this.subject = subject;
     }
 
@@ -31,7 +31,7 @@ public class Class {
         return this.number;
     }
 
-    public Subject getsubject() {
+    public Subject getSubject() {
         return this.subject;
     }
 
@@ -43,7 +43,7 @@ public class Class {
         this.number = class_number;
     }
 
-    public void setsubject(Subject subject) {
+    public void setSubject(Subject subject) {
         this.subject = subject;
     }
 
