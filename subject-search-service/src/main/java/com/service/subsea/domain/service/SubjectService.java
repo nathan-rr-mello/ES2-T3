@@ -1,10 +1,12 @@
-package com.service.subreg.domain.service;
+package com.service.subsea.domain.service;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.service.subreg.domain.repository.SubjectRepository;
-import com.service.subreg.domain.model.Subject;
+
+import com.service.subsea.domain.repository.SubjectRepository;
+import com.service.subsea.domain.model.Subject;
 
 @Service
 public class SubjectService {
@@ -15,7 +17,7 @@ public class SubjectService {
         this.subjectRepository = subjectRepository;
     }
 
-    public void save(Subject subject){
-        subjectRepository.save(subject);
+    public List<Subject> findAll() {
+        return subjectRepository.findAll();
     }
 }

@@ -1,9 +1,12 @@
-package com.service.subreg.domain.service;
+package com.service.subsea.domain.service;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.service.subreg.domain.repository.ClassroomRepository;
-import com.service.subreg.domain.model.Classroom;
+
+import com.service.subsea.domain.repository.ClassroomRepository;
+import com.service.subsea.domain.model.Classroom;
 
 @Service
 public class ClassroomService {
@@ -14,7 +17,7 @@ public class ClassroomService {
         this.classRepository = classRepository;
     }
 
-    public void save(Classroom classroom){
-        classRepository.save(classroom);
+    public List<Classroom> findAll() {
+        return classRepository.findAll();
     }
 }

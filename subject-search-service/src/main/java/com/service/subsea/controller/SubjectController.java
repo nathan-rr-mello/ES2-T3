@@ -1,12 +1,13 @@
-package com.service.subreg.controller;
+package com.service.subsea.controller;
 
-import com.service.subreg.domain.model.Subject;
-import com.service.subreg.domain.service.SubjectService;
+import com.service.subsea.domain.model.Subject;
+import com.service.subsea.domain.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/subjects")
@@ -18,8 +19,8 @@ public class SubjectController {
         this.subjectService = subjectService;
     }
 
-    @PostMapping
-    public void save(@RequestBody Subject subject){
-        subjectService.save(subject);
+    @GetMapping
+    public List<Subject> getAllSubjects() {
+        return subjectService.findAll();
     }
 }

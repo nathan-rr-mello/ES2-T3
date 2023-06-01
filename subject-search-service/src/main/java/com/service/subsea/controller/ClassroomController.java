@@ -1,12 +1,13 @@
-package com.service.subreg.controller;
+package com.service.subsea.controller;
 
-import com.service.subreg.domain.model.Classroom;
-import com.service.subreg.domain.service.ClassroomService;
+import com.service.subsea.domain.model.Classroom;
+import com.service.subsea.domain.service.ClassroomService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/classrooms")
@@ -18,8 +19,8 @@ public class ClassroomController {
         this.classroomService = classroomService;
     }
 
-    @PostMapping
-    public void save(@RequestBody Classroom classroom){
-        classroomService.save(classroom);
+    @GetMapping
+    public List<Classroom> getAllClassrooms() {
+        return classroomService.findAll();
     }
 }
