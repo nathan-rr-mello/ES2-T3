@@ -47,3 +47,4 @@ go.work
 
 *.db
 .DS_Store
+.env

@@ -26,6 +26,7 @@ func (s *Server) saveStudent(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": err,
 		})
+		return
 	}
 	c.JSON(http.StatusCreated, student)
 }
