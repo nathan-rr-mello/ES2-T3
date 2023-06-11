@@ -1,9 +1,11 @@
 package sql
 
 import (
+	"fmt"
+	"os"
 	"student-search-service/model"
 
-	"gorm.io/driver/sqlite"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
@@ -12,7 +14,16 @@ type StudentRepository struct {
 }
 
 func NewStudentRepository() (*StudentRepository, error) {
-	db, err := gorm.Open(sqlite.Open("student.db"), &gorm.Config{})
+
+	host := os.Getenv("AWS_RDS_HOST")
+	pass := os.Getenv("AWS_RDS_PASSWORD")
+
+	dsn := fmt.Sprintf("host=%s user=student_user password=%s dbname=postgres port=5432 sslmode=disable",
+		host,
+		pass,
+	)
+
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		return nil, err
 	}

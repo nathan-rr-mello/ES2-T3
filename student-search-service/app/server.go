@@ -31,5 +31,5 @@ func NewServer() (*Server, error) {
 
 func (s *Server) Run() error {
 	s.initRoutes()
-	return s.router.Run(":8080")
+	return s.router.Run(":8081")
 }
