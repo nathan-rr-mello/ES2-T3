@@ -1,7 +1,7 @@
 package com.service.subsea.controller;
 
-import com.service.subsea.domain.model.Classroom;
-import com.service.subsea.domain.service.ClassroomService;
+import com.service.subsea.domain.model.Class;
+import com.service.subsea.domain.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,16 +11,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/classrooms")
-public class ClassroomController {
-    private final ClassroomService classroomService;
+public class ClassController {
+    private final ClassService classroomService;
 
     @Autowired
-    public ClassroomController(ClassroomService classroomService) {
+    public ClassController(ClassService classroomService) {
         this.classroomService = classroomService;
     }
 
     @GetMapping
-    public List<Classroom> getAllClassrooms() {
+    public List<Class> getAllClasss() {
         return classroomService.findAll();
     }
 }

@@ -1,4 +1,4 @@
-package com.service.subreg.domain.model;
+package com.service.subsea.domain.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "CLASSROOM")
-public class Classroom {
+public class Class {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,10 +17,10 @@ public class Classroom {
     @ManyToOne
     private Subject subject;
 
-    public Classroom() {
+    public Class() {
     }
 
-    public Classroom(int number, Subject subject) {
+    public Class(int number, Subject subject) {
         this.number = number;
         this.subject = subject;
     }

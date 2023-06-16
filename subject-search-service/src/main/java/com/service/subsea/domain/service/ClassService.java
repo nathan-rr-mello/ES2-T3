@@ -5,19 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.service.subsea.domain.repository.ClassroomRepository;
-import com.service.subsea.domain.model.Classroom;
+import com.service.subsea.domain.repository.ClassRepository;
+import com.service.subsea.domain.model.Class;
 
 @Service
-public class ClassroomService {
-    private ClassroomRepository classRepository;
+public class ClassService {
+    private ClassRepository classRepository;
 
     @Autowired
-    public ClassroomService(ClassroomRepository classRepository) {
+    public ClassService(ClassRepository classRepository) {
         this.classRepository = classRepository;
     }
 
-    public List<Classroom> findAll() {
+    public List<Class> findAll() {
         return classRepository.findAll();
     }
 }
