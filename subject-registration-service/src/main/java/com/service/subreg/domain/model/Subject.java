@@ -16,7 +16,7 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany(mappedBy = "subject")
-    private List<Classroom> classes;
+    private List<Class> classes;
     private String cod;
     private String name;
     private String schedule;
@@ -62,11 +62,11 @@ public class Subject {
         this.schedule = schedule;
     }  
 
-    public List<Classroom> getClasses() {
+    public List<Class> getClasses() {
         return this.classes;
     }
 
-    public void setClasses(List<Classroom> classes) {
+    public void setClasses(List<Class> classes) {
         this.classes = classes;
     }
 
