@@ -7,4 +7,5 @@ import com.service.subreg.domain.model.Enrollment;
 
 @Repository
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long>{
+    Enrollment findBystudentId(Long studentId);
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.stereotype.Service;
 
-@FeignClient(name = "student")
+@FeignClient(name = "student-search-service")
 public interface StudentProxy {
     @GetMapping("/search/{id}")
     public Enrollment getStudentById(@PathVariable Long id);

@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+import javax.validation.Valid;
+import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/enroll")
@@ -27,18 +32,20 @@ public class EnrollmentController {
 
     @PostMapping
     public void saveEnroll(@RequestBody Enrollment enrollment){
-        Enrollment enroll = studentProxy.getStudentById(enrollment.studentId);
-        enroll.classroomValue = 2L;
-        enroll.classroomId = 3L;
-        enrollmentService.save(enroll);
+        Long studentId = enrollment.getStudentId();
+        ResponseEntity<Enrollment> responseEntity = new RestTemplate().getForEntity("http://localhost:8081/search/{studentId}", Enrollment.class, studentId);
+        if (responseEntity.getStatusCode() == HttpStatus.OK) {
+            enrollmentService.save(enrollment);
+        }
+
     }
-    // informar número de matrícula do estudante, código e turma da disciplina
-    // @PostMapping("/enroll-student/{studentId}/in-classroom/{classroomValue}/{classroomId}")
-    // public Enrollment enroller(@PathVariable Long studentId, @PathVariable Long classroomValue, @PathVariable Long classroomId) {
-    //     Enrollment enrollment = repository.save(studentId, classroomValue, classroomId);
-    //     enrollment.setStudentId(studentId);
-    //     enrollment.setClassroomValue(classroomValue);
-    //     enrollment.setClassroomId(classroomId);
-    //     return enrollment;
-    // }
+    // Consultar as disciplinas/turmas em que um estudante está matriculado
+    @GetMapping("/{studentId}")
+    public Enrollment findBystudentId(@Valid @PathVariable Long studentId){
+        System.out.println(studentId);
+        Enrollment enroll = enrollmentService.findBystudentId(123L);
+        System.out.println(enroll);
+        return enroll;
+    }
+
 }

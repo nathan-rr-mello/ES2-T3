@@ -17,4 +17,8 @@ public class EnrollmentService {
     public void save(Enrollment enrollment){
         enrollmentRepository.save(enrollment);
     }
+
+    public Enrollment findBystudentId(Long studentId){
+        return enrollmentRepository.findBystudentId(studentId);
+    }
 }
