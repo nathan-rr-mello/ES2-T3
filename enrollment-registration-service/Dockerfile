@@ -11,6 +11,6 @@ COPY src ./src
 # Executa o comando Maven para construir o projeto
 RUN mvn package -DskipTests
 # Expõe a porta em que o microserviço estará executando
-EXPOSE 8082
+EXPOSE 8002
 # Define o comando para executar o microserviço
 CMD ["java", "-jar", "target/sub-reg-0.0.1-SNAPSHOT.jar"]
