@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import javax.validation.Valid;
@@ -41,9 +42,8 @@ public class EnrollmentController {
     }
     // Consultar as disciplinas/turmas em que um estudante está matriculado
     @GetMapping("/{studentId}")
-    public Enrollment findBystudentId(@Valid @PathVariable Long studentId){
-        System.out.println(studentId);
-        Enrollment enroll = enrollmentService.findBystudentId(123L);
+    public List<Enrollment> findBystudentId(@Valid @PathVariable Long studentId){
+        List<Enrollment> enroll = enrollmentService.findBystudentId(studentId);
         System.out.println(enroll);
         return enroll;
     }
